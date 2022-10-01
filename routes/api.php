@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\SclassController;
+use App\Http\Controllers\Api\StudentController;
+use App\Http\Controllers\Api\SubjectController;
 use App\Http\Controllers\Api\V1\PersonController as V1PersonController;
 use App\Http\Controllers\Api\V2\PersonController;
 use Illuminate\Http\Request;
@@ -25,7 +28,10 @@ Route::prefix('v1')->group(function(){
     Route::apiResource('/people', V1PersonController::class)->only('index');
 });
 
-
 Route::prefix('v2')->group(function(){
     Route::apiResource('/person', PersonController::class)->only('show');
 });
+
+Route::apiResource('class', SclassController::class);
+Route::apiResource('/subject', SubjectController::class);
+Route::apiResource('/student', StudentController::class);
